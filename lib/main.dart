@@ -4,7 +4,14 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:user_manager/utils/constants.dart';
 import 'package:user_manager/view/home_view.dart';
+import 'package:user_manager/view/login_view.dart';
+import 'package:user_manager/view/profile_view.dart';
+import 'package:user_manager/view/signup_view.dart';
 import 'package:user_manager/viewModel/login_view_model.dart';
+import 'package:user_manager/viewModel/profile_view_model.dart';
+import 'package:user_manager/viewModel/signup_view_model.dart';
+
+import 'utils/locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +30,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
+    setupLocator();
     super.initState();
   }
 
@@ -32,6 +40,8 @@ class _MyAppState extends State<MyApp> {
         return MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (context) => LoginViewModel()),
+            ChangeNotifierProvider(create: (context) => ProfileViewModel()),
+            ChangeNotifierProvider(create: (context) => SignUpViewModel()),
           ],
           child: MaterialApp(
             title: 'User Manager',
@@ -40,9 +50,11 @@ class _MyAppState extends State<MyApp> {
               primaryColor: Constants.primaryColorDark,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            home: HomeView(),
+            home: LoginScreen(),
             routes: {
-              // WalkThroughScreen.routeName: (context) => WalkThroughScreen(),
+              LoginScreen.routeName: (context) => LoginScreen(),
+              SignUpSCreen.routeName: (context) => SignUpSCreen(),
+              ProfileScreen.routeName: (context) => ProfileScreen()
             },
           ),
         );
