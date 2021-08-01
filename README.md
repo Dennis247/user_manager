@@ -1,6 +1,18 @@
 # user_manager
 
-A new Flutter project.
+A User Manager system.
+
+This application architecture is done using MVVM
+
+The UI is decopuled from the business logic.
+
+The business logic resides in the view model.
+
+There is a service layer that provides the necessary data to the viewmodel.
+
+Provider is used for state management.
+
+Unit test is done to check if a particular title is present on the widget.
 
 ## Getting Started
 
