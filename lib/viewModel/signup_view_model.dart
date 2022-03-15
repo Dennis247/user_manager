@@ -34,7 +34,7 @@ class SignUpViewModel extends BaseViewModel {
   Future<BaseResponse> addUpdateUser(
       {required Map<String, dynamic> userData, bool isEdit = false}) async {
     try {
-      //login user from repo
+      //add or update user to the repo repo
       final userResponse = await locator<UserService>()
           .addOrUpdateUser(data: userData, isEdit: isEdit);
       return userResponse;
